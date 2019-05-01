@@ -1,12 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 // import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-// import DeleteBtn from "../components/DeleteBtn";
-// import { List, ListItem } from "../components/List";
+import Results from "../components/Results/Results"
 
-class Saved extends Component {
+class Saved extends React.Component {
   state = {
     books: [],
     title: "",
@@ -33,18 +30,9 @@ class Saved extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-              <h1>
-                Saved Books
-              </h1>
-              )}
-          </Col>
-        </Row>
-      
-       
-      </Container>
+      <div>
+        <Results/>
+      </div>
     );
   }
 }
