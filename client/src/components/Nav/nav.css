@@ -3,5 +3,6 @@ header {
 }
 
 .saved {
-  padding-left: 20px;
+  position: relative;
+  margin-left: 20px;
 }

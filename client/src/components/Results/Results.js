@@ -1,10 +1,10 @@
 import React from 'react'
 import './results.css'
 
-function Results() {
+function Results(props) {
   return (
-    <div>
-      Results
+    <div className="container results-container">
+      {props.children}
     </div>
   )
 }

@@ -2,6 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import API from "../utils/API";
 import Results from "../components/Results/Results"
+import RenderBook from "../components/RenderBook/RenderBook";
 
 class Saved extends React.Component {
   state = {
@@ -31,7 +32,9 @@ class Saved extends React.Component {
   render() {
     return (
       <div>
-        <Results/>
+        <Results>
+          <RenderBook/>
+        </Results>
       </div>
     );
   }

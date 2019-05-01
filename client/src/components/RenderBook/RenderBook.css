@@ -1,0 +1,34 @@
+.bookitem {
+  border: solid black 1px;
+  margin-top: 5px;
+  border: solid 1px rgb(196, 196, 196);
+  box-shadow: 3px 2px 2px black;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.bookinfo p {
+  line-height: 7px;
+  position: relative;
+  top: 10px;
+}
+
+.bookbtns button {
+  float: right;
+  position: relative;
+  top: 10px;
+  left: 20px;
+  margin-right: 10px;
+}
+
+.bookbottom {
+
+}
+
+.bookimg {
+
+}
+
+.booksummary {
+  float: left;
+}

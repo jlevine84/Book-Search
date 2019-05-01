@@ -3,6 +3,7 @@ import API from "../utils/API";
 import GoogleApi from '../utils/GoogleApi'
 import BookSearch from "../components/BookSearch/BookSearch";
 import Results from "../components/Results/Results"
+import RenderBook from '../components/RenderBook/RenderBook'
 
 class Books extends React.Component {
   state = {
@@ -55,7 +56,9 @@ class Books extends React.Component {
     return (
       <div>
         <BookSearch/>
-        <Results/>
+        <Results>
+          <RenderBook/>
+        </Results>
       </div>
     );
   }

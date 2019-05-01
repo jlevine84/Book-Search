@@ -1,0 +1,8 @@
+.results-container {
+  height: auto;
+  width: 75vw;
+  border: solid 1px rgb(196, 196, 196);
+  box-shadow: 3px 2px 2px black;
+  margin-top: 10px;
+  border-radius: 5px;
+}
