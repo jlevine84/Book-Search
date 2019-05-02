@@ -1,7 +1,7 @@
 import React from 'react'
 import './booksearch.css'
 
-function BookSearch() {
+function BookSearch(props) {
   return (
     <div className="container booksearch">
       <form>
@@ -9,11 +9,16 @@ function BookSearch() {
           <input 
           type="text"
           className="form-control"
-          name="searchInput"
           placeholder="Search for a Book!"
+          onChange={props.handleInputChange}
+          value={props.query}
           />
         </div>
-        <button type="submit" class="btn btn-success searchbtn">Search</button>
+        <button 
+        type="submit"
+        className="btn btn-success searchbtn"
+        onClick={props.searchBook}
+        >Search</button>
       </form>
     </div>
   )
