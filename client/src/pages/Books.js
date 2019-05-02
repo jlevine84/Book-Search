@@ -17,23 +17,14 @@ class Books extends React.Component {
     query: ""
   };
 
-  componentDidMount() {
-    // this.loadBooks();
+  saveBook = (event) => {
+    let book = {}
+    book.author = event.target.getAttribute('author')
+    book.title = event.target.title
+    book.image = event.target.getAttribute('image')
+    book.description = event.target.getAttribute('description')
+    console.log(book)
   }
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data.books, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
 
   handleInputChange = event => {
     const value = event.target.value;
@@ -70,7 +61,6 @@ class Books extends React.Component {
         searchResults.push(book)
       }
       this.setState({books: searchResults})
-      console.log(this.state.books)
     }).catch(err => console.log(err))
   }
 
@@ -87,11 +77,13 @@ class Books extends React.Component {
             this.state.books.map((book,i) => (
               <RenderBook
                 key={i}
+                delete={null}
                 author={book.author}
                 link={book.link}
                 title={book.title}
                 image={book.image}
                 description={book.description}
+                saveBook={this.saveBook.bind(this)}
               />
             ))
           }          

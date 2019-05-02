@@ -6,10 +6,7 @@ import RenderBook from "../components/RenderBook/RenderBook";
 
 class Saved extends React.Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    books: []
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
@@ -19,7 +16,7 @@ class Saved extends React.Component {
 
   loadBooks = () => {
     API.getBooks()
-    .then(res => this.setState({ books: res.data, title: "", author: "", synopsis: "" }))
+    .then(res => this.setState({ books: res }))
     .catch(err => console.log(err));
   }
 

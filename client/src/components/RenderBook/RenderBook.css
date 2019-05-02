@@ -1,3 +1,23 @@
+.view {
+  color: white;
+  text-decoration: none;
+}
+
+.view :link {
+  color: white;
+  text-decoration: none;
+}
+
+.view :hover {
+  color: white;
+  text-decoration: none;
+}
+
+.view :visited {
+  color: white;
+  text-decoration: none;
+}
+
 .bookitem {
   border: solid black 1px;
   margin-top: 5px;
@@ -5,6 +25,10 @@
   box-shadow: 3px 2px 2px black;
   border-radius: 5px;
   margin-bottom: 5px;
+}
+
+.bookinfo {
+  margin-top: 10px;
 }
 
 .bookinfo p {
@@ -25,6 +49,7 @@
 .bookbottom {
   height: auto;
   overflow: auto;
+  margin-bottom: 10px;
 }
 
 .bookimg {

@@ -6,13 +6,22 @@ function RenderBook(props) {
     <div className="container bookitem">
       <div className="row booktop">
         <div className="col-9 bookinfo">
-          <p><strong>{props.title}</strong></p>
+          <h5><strong>{props.title}</strong></h5>
           <p>Written by: {props.author}</p>
         </div>
         <div className="col-3 bookbtns">
-          <button className="btn btn-primary" href={props.link}>View</button>
-          <button className="btn btn-secondary">Save</button>
-          <button className="btn btn-danger">Delete</button>
+          <button 
+            className="btn btn-success"
+            author={props.author}
+            title={props.title}
+            description={props.description}
+            image={props.image}
+            onClick={props.saveBook}
+            >
+          Save
+          </button>
+          <a href={props.link} className="view"><button className="btn btn-primary">View</button></a>
+          {!props.delete === null ? <button className="btn btn-danger">Delete</button>: ""}
         </div>
       </div>
       <hr/>
