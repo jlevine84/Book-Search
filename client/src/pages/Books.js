@@ -3,7 +3,7 @@ import API from "../utils/API";
 import GoogleApi from '../utils/GoogleApi'
 import BookSearch from "../components/BookSearch/BookSearch";
 import Results from "../components/Results/Results"
-import RenderBook from '../components/RenderBook/RenderBook'
+import RenderNewBook from '../components/RenderBooks/RenderNewBook'
 
 const styles = {
   alignment: {
@@ -17,13 +17,15 @@ class Books extends React.Component {
     query: ""
   };
 
-  saveBook = (event) => {
+  saveBook = event => {
     let book = {}
     book.author = event.target.getAttribute('author')
     book.title = event.target.title
     book.image = event.target.getAttribute('image')
     book.description = event.target.getAttribute('description')
-    console.log(book)
+    API.saveBook(book)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
   handleInputChange = event => {
@@ -75,7 +77,7 @@ class Books extends React.Component {
         <Results>
           {this.state.books.length === 0 ? <h1 style={styles.alignment}>Search for a Book!</h1> : 
             this.state.books.map((book,i) => (
-              <RenderBook
+              <RenderNewBook
                 key={i}
                 delete={null}
                 author={book.author}

@@ -1,26 +1,36 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import API from "../utils/API";
 import Results from "../components/Results/Results"
-import RenderBook from "../components/RenderBook/RenderBook";
+import RenderSavedBooks from "../components/RenderBooks/RenderSavedBooks";
+
+const styles = {
+  alignment: {
+    textAlign: "center"
+  }
+}
 
 class Saved extends React.Component {
   state = {
-    books: []
+    savedBooks: []
   };
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
+
   componentDidMount() {
     this.loadBooks();
   }
 
   loadBooks = () => {
     API.getBooks()
-    .then(res => this.setState({ books: res }))
+    .then(res => {
+      this.setState({savedBooks: res.data})
+      console.log(res)
+    })
     .catch(err => console.log(err));
   }
 
-  deleteBook = id => {
+  deleteBook = event => {
+    console.log(event.target)
+    let id = event.target.getAttribute('id')
+    console.log(id)
     API.deleteBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
@@ -30,7 +40,21 @@ class Saved extends React.Component {
     return (
       <div>
         <Results>
-          <RenderBook/>
+        {this.state.savedBooks.length === 0 ? <h1 style={styles.alignment}>Search for a Book!</h1> : 
+            this.state.savedBooks.map((book,i) => (
+              <RenderSavedBooks
+                key={i}
+                id={book._id}
+                save={null}
+                author={book.author}
+                link={book.link}
+                title={book.title}
+                image={book.image}
+                description={book.description}
+                deleteBook={this.deleteBook.bind(this)}
+              />
+            ))
+          }   
         </Results>
       </div>
     );
