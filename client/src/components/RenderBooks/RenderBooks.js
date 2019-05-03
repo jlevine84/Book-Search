@@ -1,7 +1,7 @@
 import React from 'react'
 import './RenderBook.css'
 
-function RenderSavedBook(props) {
+function RenderNewBook(props) {
   return (
     <div className="container bookitem">
       <div className="row booktop">
@@ -10,14 +10,25 @@ function RenderSavedBook(props) {
           <p>Written by: {props.author}</p>
         </div>
         <div className="col-3 bookbtns">
-          {!props.save === null ? <button className="btn btn-success">Save</button> : ""}
-          <button 
-            className="btn btn-danger"
-            id={props.id}
-            onClick={props.deleteBook}
-            >
-          Delete
-          </button>
+          {props.saveOrDelete === "save" ? 
+            <button 
+              className="btn btn-success"
+              author={props.author}
+              title={props.title}
+              description={props.description}
+              image={props.image}
+              onClick={props.saveBook}
+              >Save
+            </button> 
+          : ""}
+          {props.saveOrDelete === "delete" ? 
+            <button 
+              className="btn btn-danger"
+              id={props.id}
+              onClick={props.deleteBook}
+              >Delete
+            </button>
+          : ""}
           <a href={props.link} className="view"><button className="btn btn-primary">View</button></a>
         </div>
       </div>
@@ -32,4 +43,5 @@ function RenderSavedBook(props) {
   )
 }
 
-export default RenderSavedBook
+
+export default RenderNewBook

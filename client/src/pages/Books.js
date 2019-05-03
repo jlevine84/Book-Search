@@ -3,7 +3,7 @@ import API from "../utils/API";
 import GoogleApi from '../utils/GoogleApi'
 import BookSearch from "../components/BookSearch/BookSearch";
 import Results from "../components/Results/Results"
-import RenderNewBook from '../components/RenderBooks/RenderNewBook'
+import RenderBooks from '../components/RenderBooks/RenderBooks'
 
 const styles = {
   alignment: {
@@ -20,7 +20,7 @@ class Books extends React.Component {
   saveBook = event => {
     let book = {}
     book.author = event.target.getAttribute('author')
-    book.title = event.target.title
+    book.title = event.target.getAttribute('title')
     book.image = event.target.getAttribute('image')
     book.description = event.target.getAttribute('description')
     API.saveBook(book)
@@ -33,19 +33,6 @@ class Books extends React.Component {
     this.setState({
       query: value
     });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
   };
 
   searchBook = event => {
@@ -77,9 +64,9 @@ class Books extends React.Component {
         <Results>
           {this.state.books.length === 0 ? <h1 style={styles.alignment}>Search for a Book!</h1> : 
             this.state.books.map((book,i) => (
-              <RenderNewBook
+              <RenderBooks
                 key={i}
-                delete={null}
+                saveOrDelete={"save"}
                 author={book.author}
                 link={book.link}
                 title={book.title}

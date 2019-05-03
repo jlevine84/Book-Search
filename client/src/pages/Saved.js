@@ -1,7 +1,7 @@
 import React from "react";
 import API from "../utils/API";
 import Results from "../components/Results/Results"
-import RenderSavedBooks from "../components/RenderBooks/RenderSavedBooks";
+import RenderBooks from '../components/RenderBooks/RenderBooks'
 
 const styles = {
   alignment: {
@@ -42,10 +42,10 @@ class Saved extends React.Component {
         <Results>
         {this.state.savedBooks.length === 0 ? <h1 style={styles.alignment}>Search for a Book!</h1> : 
             this.state.savedBooks.map((book,i) => (
-              <RenderSavedBooks
+              <RenderBooks
                 key={i}
                 id={book._id}
-                save={null}
+                saveOrDelete={"delete"}
                 author={book.author}
                 link={book.link}
                 title={book.title}
