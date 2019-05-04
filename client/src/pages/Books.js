@@ -45,7 +45,9 @@ class Books extends React.Component {
         book.author = res.data.items[i].volumeInfo.authors[0]
         book.link = res.data.items[i].volumeInfo.infoLink
         book.title = res.data.items[i].volumeInfo.title
-        book.image = res.data.items[i].volumeInfo.imageLinks.thumbnail
+        book.image = (res.data.items[i].volumeInfo.imageLinks && res.data.items[i].volumeInfo.imageLinks.thumbnail) 
+        ? res.data.items[i].volumeInfo.imageLinks.thumbnail 
+        : 'http://placehold.it/300x300'
         book.description = res.data.items[i].volumeInfo.description
         searchResults.push(book)
       }
